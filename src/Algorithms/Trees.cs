@@ -39,4 +39,35 @@ public static class Trees
 
         return count;
     }
+
+    /// <summary>
+    /// Uses DFS to count the number of times the specified value occurs in the tree.
+    /// </summary>
+    public static int IterativeDfsCount(IntTreeNode root, int value)
+    {
+        var stack = new Stack<IntTreeNode>();
+        stack.Push(root);
+
+        int count = 0;
+        while (stack.Count > 0)
+        {
+            var current = stack.Pop();
+            if (current.Value == value)
+            {
+                count++;
+            }
+
+            if (current.Left != null)
+            {
+                stack.Push(current.Left);
+            }
+
+            if (current.Right != null)
+            {
+                stack.Push(current.Right);
+            }
+        }
+
+        return count;
+    }
 }
